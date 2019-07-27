@@ -1,4 +1,4 @@
-package sparkscalaexam
+package tasks1
 
 /**
   * Read 2 csv (flights and carriers).

@@ -1,4 +1,4 @@
-package sparkscalaexam
+package tasks1
 
 import init.InitSpark
 import org.apache.spark.sql.Row

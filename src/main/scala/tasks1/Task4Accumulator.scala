@@ -1,4 +1,4 @@
-package sparkscalaexam
+package tasks1
 
 import java.util.Scanner
 
