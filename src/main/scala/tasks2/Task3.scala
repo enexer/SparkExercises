@@ -17,7 +17,7 @@ object Task3 extends InitSpark {
     .select(explode('list)) // explode list to show all values
     .writeStream
     .format("console")
-    .outputMode("complete") // need aggregation
+    .outputMode("complete") // need aggregation for complete mode
     .option("checkpointLocation", "data/checkpoint")
     .start()
     .awaitTermination()
@@ -26,6 +26,10 @@ object Task3 extends InitSpark {
   //Append output mode not supported when there are streaming aggregations on streaming DataFrames/DataSets without watermark;;
 }
 /*
+>nc -lk 9999
+>first
+>second
+
 -------------------------------------------
 Batch: 0
 -------------------------------------------
