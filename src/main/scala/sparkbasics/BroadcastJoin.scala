@@ -24,3 +24,19 @@ object BroadcastJoin extends InitSpark {
   df2.join(df1, "id").explain()
 
 }
+/*
+5000
+5000
+== Physical Plan ==
+*(1) Project [id#3]
++- *(1) BroadcastHashJoin [id#3], [id#8], Inner, BuildRight
+   :- LocalTableScan [id#3]
+   +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)))
+      +- LocalTableScan [id#8]
+== Physical Plan ==
+*(1) Project [id#8]
++- *(1) BroadcastHashJoin [id#8], [id#3], Inner, BuildLeft
+   :- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)))
+   :  +- LocalTableScan [id#8]
+   +- LocalTableScan [id#3]
+ */

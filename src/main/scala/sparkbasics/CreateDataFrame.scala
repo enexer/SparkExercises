@@ -25,3 +25,16 @@ object CreateDataFrame extends InitializeSpark {
   someDF.show()
 
 }
+/*
+root
+ |-- number: integer (nullable = true)
+ |-- word: string (nullable = true)
+
++------+-----+
+|number| word|
++------+-----+
+|     8|  bat|
+|    64|mouse|
+|   -27|horse|
++------+-----+
+ */

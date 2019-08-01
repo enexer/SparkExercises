@@ -32,6 +32,25 @@ object CreateArrayTypeDF extends InitSpark {
   //  ok | 2
   //  ok | 3
   singersDF.select('name, explode('hit_songs).as("song")).show()
-
-
 }
+/*
++------+-------------+
+|  name|    hit_songs|
++------+-------------+
+|bieber|[baby, sorry]|
+| ozuna|   [criminal]|
++------+-------------+
+
+root
+ |-- name: string (nullable = true)
+ |-- hit_songs: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+
++------+--------+
+|  name|    song|
++------+--------+
+|bieber|    baby|
+|bieber|   sorry|
+| ozuna|criminal|
++------+--------+
+ */
