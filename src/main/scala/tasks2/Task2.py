@@ -29,9 +29,9 @@ dataA.join(f.broadcast(dataB), 'code') \
     .orderBy(f.col('avg').desc()) \
     .coalesce(1) \
     .write \
-    .option("sep", "\t") \
-    .option("header", "true") \
-    .csv("data/tasks2/out/t2")
+    .option('sep", ''\t') \
+    .option('header', 'true') \
+    .csv('data/tasks2/out/t2')
 
 # +------+--------+
 # |   CUR|     avg|
