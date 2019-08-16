@@ -2,17 +2,17 @@ from pyspark import SparkContext
 from pyspark.sql import *
 import pyspark.sql.functions as f
 
-sc = SparkContext("local", "app")
+sc = SparkContext('local', 'app')
 sc.setLogLevel('OFF')
 spark = SparkSession(sc)
 
 spark.readStream \
-    .format("socket") \
-    .option("host", "localhost") \
-    .option("port", 9999) \
+    .format('socket') \
+    .option('host', 'localhost') \
+    .option('port', 9999) \
     .load() \
     .agg(f.collect_list(f.col('value')).alias('list')) \
-    .select(f.explode(f.col("list"))) \
+    .select(f.explode(f.col('list'))) \
     .writeStream \
     .format('console') \
     .outputMode('complete') \
