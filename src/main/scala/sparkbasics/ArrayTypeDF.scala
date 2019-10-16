@@ -39,5 +39,20 @@ object ArrayTypeDF extends InitSpark {
   )
   actualDF2.show(truncate = false)
 
-
 }
+
+/*
++-------------------+--------------+
+|word1              |colors        |
++-------------------+--------------+
+|i like blue and red|[blue, red,,] |
+|you pink and blue  |[blue,, pink,]|
++-------------------+--------------+
+
++-------------------+---------+
+|word1              |colors   |
++-------------------+---------+
+|i like blue and red|blue,red |
+|you pink and blue  |blue,pink|
++-------------------+---------+
+ */

@@ -47,8 +47,50 @@ object OrderByMultipleFields extends InitSpark{
   val list2 = List("a1","a2","a3")
   println(f1("as","asd","123"))
   println(f1(list2: _*))
-
-
-
-
 }
+/*
+root
+ |-- number: integer (nullable = true)
+ |-- word: string (nullable = true)
+
++------+----+
+|number|word|
++------+----+
+|     5|   A|
+|     3|   A|
+|     2|   B|
+|     1|   C|
+|     3|   X|
+|     3|   Z|
++------+----+
+
++------+----+
+|number|word|
++------+----+
+|     5|   A|
+|     3|   Z|
+|     3|   X|
+|     3|   A|
+|     2|   B|
+|     1|   C|
++------+----+
+
++------+----+
+|number|word|
++------+----+
+|     2|   B|
+|     3|   A|
+|     5|   A|
+|     3|   Z|
+|     3|   X|
++------+----+
+
++----------------+---------------+
+|number_freqItems| word_freqItems|
++----------------+---------------+
+|    [2, 5, 1, 3]|[A, C, X, Z, B]|
++----------------+---------------+
+
+asasd123
+a1a2a3
+ */

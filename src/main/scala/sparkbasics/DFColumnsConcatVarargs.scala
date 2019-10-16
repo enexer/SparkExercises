@@ -34,3 +34,25 @@ object DFColumnsConcatVarargs extends InitializeSpark {
   // _*  -  vararg  if method param is String* and u wanna use List[String] here
   concatDF2.drop(df.columns: _*).show()
 }
+/*
++---+------+
+| id|letter|
++---+------+
+|123|     b|
+|123|     c|
++---+------+
+
++----------+
+|concatCols|
++----------+
+|     123,b|
+|     123,c|
++----------+
+
++----------+
+|concatCols|
++----------+
+|     123,b|
+|     123,c|
++----------+
+ */

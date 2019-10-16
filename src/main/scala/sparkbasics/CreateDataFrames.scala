@@ -7,8 +7,11 @@ import org.apache.spark.sql.types._
 object CreateDataFrames extends InitSpark {
 
   val df2 = List(Row(1, 1))
-  val fields = Seq(StructField("ok1", DataTypes.IntegerType),
-    StructField("ok2", DataTypes.IntegerType))
+
+  val fields = Seq(
+    StructField("ok1", DataTypes.IntegerType),
+    StructField("ok2", DataTypes.IntegerType)
+  )
 
   val struct = new StructType()
     .add("ok", DataTypes.IntegerType)
@@ -20,7 +23,22 @@ object CreateDataFrames extends InitSpark {
   )
 
 
- // spark.createDataFrame(df2,struct).printSchema()
-  // spark.createDataFrame(sc.parallelize(df2),someSchema)
+  spark.createDataFrame(sc.parallelize(df2),StructType(fields)).printSchema()
 
+  spark.createDataFrame(sc.parallelize(df2),struct).printSchema()
+
+  spark.createDataFrame(sc.parallelize(df2),StructType(someSchema)).printSchema()
 }
+/*
+root
+ |-- ok1: integer (nullable = true)
+ |-- ok2: integer (nullable = true)
+
+root
+ |-- ok: integer (nullable = true)
+ |-- ok2: integer (nullable = true)
+
+root
+ |-- number: integer (nullable = true)
+ |-- word: string (nullable = true)
+ */

@@ -15,3 +15,30 @@ object JoinDuplicatedColumns extends InitSpark{
   data3.printSchema()
   data3.show()
 }
+/*
++---+----+---+
+| a1|  a2| a3|
++---+----+---+
+|  1|blue|  2|
+|  4| red| 10|
++---+----+---+
+
++---+-----+---+
+| a1|   a2| a3|
++---+-----+---+
+|  1|green|  2|
++---+-----+---+
+
+root
+ |-- a1: integer (nullable = false)
+ |-- a3: integer (nullable = false)
+ |-- a2: string (nullable = true)
+ |-- a2: string (nullable = true)
+
++---+---+----+-----+
+| a1| a3|  a2|   a2|
++---+---+----+-----+
+|  1|  2|blue|green|
+|  4| 10| red| null|
++---+---+----+-----+
+ */

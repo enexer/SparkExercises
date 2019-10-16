@@ -27,7 +27,23 @@ object IsInAndWhenOrOtherwise extends InitializeSpark {
   val correctAge = List(5,19)
   val isInDF = sourceDF.withColumn("isIn?", 'age.isin(correctAge: _*))
   isInDF.show()
-
-
-
 }
+/*
++---+------------+
+|age|age_category|
++---+------------+
+|  5| young child|
+| 14|    teenager|
+| 19|    teenager|
+| 75|     elderly|
++---+------------+
+
++---+-----+
+|age|isIn?|
++---+-----+
+|  5| true|
+| 14|false|
+| 19| true|
+| 75|false|
++---+-----+
+ */

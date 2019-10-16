@@ -11,3 +11,8 @@ object CountWordOccurence extends InitializeSpark {
     .sortBy(_._2, false) // sort by occurrence descending
     .foreach(println(_))
 }
+/*
+(ok,4)
+(yes,2)
+(no,1)
+ */
