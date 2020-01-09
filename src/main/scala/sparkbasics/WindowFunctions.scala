@@ -35,6 +35,7 @@ object WindowFunctions extends InitSpark {
   import org.apache.spark.sql.expressions.Window
   df2.select('id, 'x, sum('x).over(Window.orderBy('id)).as("df_api")).show()
 
+
 /*
 +---+---+
 | id|  x|

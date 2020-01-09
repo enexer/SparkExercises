@@ -1,6 +1,7 @@
 package sparkbasics
 
 import init.InitSpark
+import org.apache.spark.sql.RowFactory
 
 object JoinDuplicatedColumns extends InitSpark{
   import spark.implicits._
@@ -14,6 +15,8 @@ object JoinDuplicatedColumns extends InitSpark{
   val data3 = data.join(data2, Seq("a1","a3"), "left") /// PREVENT DUPLICATING COLUMNS
   data3.printSchema()
   data3.show()
+
+  val row = RowFactory.create("1","2")
 }
 /*
 +---+----+---+

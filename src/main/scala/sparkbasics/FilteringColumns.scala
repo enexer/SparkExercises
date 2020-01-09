@@ -12,7 +12,6 @@ object FilteringColumns extends InitSpark {
 
   val first = df.first()
   val size = first.length
-  val arr = for (i <- 0 to size) yield true
   val diffStr = "#"
   val targetStr = "1"
 
@@ -35,9 +34,8 @@ object FilteringColumns extends InitSpark {
   val diff = df.rdd
     .map(rowToArray)
     .reduce(compareArrays)
-    .zipWithIndex
 
-  val cols = (df.columns zip diff).filter(!_._2._1.equals(diffStr)).map(s=>df(s._1))
+  val cols = (df.columns zip diff).filter(!_._2.equals(diffStr)).map(s=>df(s._1))
 
   df.select(cols:_*).show()
 
